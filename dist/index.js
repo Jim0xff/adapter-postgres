@@ -773,8 +773,8 @@ var PostgresDatabaseAdapter = class extends DatabaseAdapter {
                     SELECT
                         embedding,
                         levenshtein(
-                            $1,
-                            content_text
+                            left($1,255),
+                            left(content_text,255)
                         ) as levenshtein_score
                     FROM content_text
                     WHERE levenshtein(
